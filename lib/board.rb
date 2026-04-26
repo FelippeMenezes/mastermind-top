@@ -1,10 +1,10 @@
 class Board
-  attr_accessor :position1, :position2, :position3, :position4
+  attr_accessor :secret_code, :user_guess, :round, :feed_back
 
-  def initialize(position1, position2, position3, position4)
-    @position1 = position1
-    @position2 = position2
-    @position3 = position3
-    @position4 = position4
+  def initialize(secret_code, user_guess, round, feed_back)
+    @secret_code = secret_code
+    @user_guess = user_guess
+    @round = round
+    @feed_back = feed_back
   end
 end
