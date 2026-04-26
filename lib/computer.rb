@@ -1,7 +1,7 @@
 require 'colorize'
 
 class Computer
-  attr_accessor :name
+  attr_accessor :name, :secret_code
 
   def initialize (name = nil, secret_code = nil)
     @name = name
