@@ -6,4 +6,9 @@ class Match
     @computer = computer
     @board = board
   end
+
+  def start_match
+    puts "Welcome! Let's play a game of Mastermind!"
+  end
 end
+
