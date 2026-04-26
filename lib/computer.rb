@@ -7,6 +7,10 @@ class Computer
 
   def self.create_computer
     names = ["GPTo", "ClaudIO", "MarI.A."]
-    @name = names.sample
+    new(names.sample)
+  end
+
+  def computer_introduce
+    puts "Hello, my name is #{@name}, and I'll be your opponent in this game."
   end
 end

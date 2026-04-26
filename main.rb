@@ -5,4 +5,4 @@ require_relative 'lib/player'
 
 player = Player.new
 computer = Computer.create_computer
-# puts computer.name
+computer.computer_introduce

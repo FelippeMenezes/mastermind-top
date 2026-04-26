@@ -3,7 +3,7 @@ class Player
 
   def initialize(name = nil, guess = nil)
     @name = name
-    @guess = name
+    @guess = guess
   end
 
   def ask_name
