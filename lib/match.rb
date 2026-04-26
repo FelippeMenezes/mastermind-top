@@ -11,24 +11,27 @@ class Match
   end
 
   def start_match
-    play_match = true
     puts "Welcome! Let's play a game of Mastermind!"
     @player.ask_player_name
     @computer = Computer.create_computer
     @computer.computer_introduce
     @computer.create_secret_code
     @match_secret_code = @computer.secret_code
-    @board.show_board
+    @board.show_board(round)
 
-    while play_match = true && @player.round_guess != @match_secret_code
+    while @player.round_guess != @match_secret_code && @round < 15
       @round += 1
       @player.ask_player_guess
-      @board.user_history_guesses << @player.round_guess
-      @board.feed_back_history << @feed_back
-      @board.show_board
-      p self
+      @board.user_guesses_record << @player.round_guess
+      @feed_back = ["X", "O", "#", "$"].sample(4) #To do
+      @board.feed_back_record << @feed_back
+      @board.show_board(round)
     end
-    puts "You won!"
+    if @player.round_guess == @match_secret_code
+      puts "Congrats! The secret code was #{@match_secret_code.join(" ")}!"
+    else
+      puts "You tried! Good luck next time!"
+    end
   end
 end
 

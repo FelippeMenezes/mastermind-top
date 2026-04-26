@@ -32,6 +32,5 @@ class Player
       when '9' then 9
       end
     end
-    string_number.chars.map(&:to_i)
   end
 end
