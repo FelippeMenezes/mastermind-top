@@ -5,4 +5,9 @@ class Player
     @name = name
     @guess = name
   end
+
+  def ask_name
+    puts "What's your name?"
+    @name = gets.chomp
+  end
 end
