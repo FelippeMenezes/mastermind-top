@@ -3,8 +3,9 @@ require 'colorize'
 class Computer
   attr_accessor :name
 
-  def initialize (name = nil)
+  def initialize (name = nil, secret_code = nil)
     @name = name
+    @secret_code = secret_code
   end
 
   def self.create_computer
@@ -14,5 +15,9 @@ class Computer
 
   def computer_introduce
     puts "Hello, my name is #{@name.colorize(:green)}, and I'll be your opponent in this game."
+  end
+
+  def create_secret_code
+    @secret_code = [1, 2, 3, 4]
   end
 end
