@@ -1,11 +1,11 @@
 class Match
-  attr_accessor :match_secret_code, :player, :computer, :board, :feed_back, :round
+  attr_accessor :player, :computer, :board, :match_secret_code, :feed_back, :round
 
   def initialize(player, computer, board, match_secret_code: [], feed_back: [], round: 1)
-    @match_secret_code = match_secret_code
     @player = player
     @computer = computer
     @board = board
+    @match_secret_code = match_secret_code
     @feed_back = feed_back
     @round = round
   end
@@ -23,6 +23,7 @@ class Match
     while play_match = true && @player.round_guess != @match_secret_code
       @player.ask_player_guess
       @board.user_history_guesses << @player.round_guess
+      @board.feed_back_history << @feed_back
       @board.show_board
     end
     puts "You won!"
