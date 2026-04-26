@@ -1,10 +1,8 @@
 class Board
-  attr_accessor :match_secret_code, :user_guess, :round, :feed_back
+  attr_accessor :user_guess, :feed_back
 
-  def initialize(match_secret_code: [], feed_back: [], user_guess: nil, round: 1)
-    @match_secret_code = match_secret_code
+  def initialize(feed_back: [], user_guess: nil)
     @user_guess = user_guess
-    @round = round
     @feed_back = feed_back
   end
 
