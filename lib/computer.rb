@@ -1,8 +1,12 @@
 class Computer
-  attr_accessor :name, :secret_code
+  attr_accessor :name
 
-  def initialize (name, secret_code)
+  def initialize (name = nil)
     @name = name
-    @secret_code = secret_code
+  end
+
+  def self.create_computer
+    names = ["GPTo", "ClaudIO", "MarI.A."]
+    @name = names.sample
   end
 end
