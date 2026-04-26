@@ -18,6 +18,7 @@ class Computer
   end
 
   def create_secret_code
-    @secret_code = [1, 2, 3, 4]
+    code_options = [1, 2, 3, 4, 5, 6]
+    @secret_code = code_options.sample(4)
   end
 end

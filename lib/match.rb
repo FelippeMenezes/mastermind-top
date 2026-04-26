@@ -25,6 +25,7 @@ class Match
       @board.user_history_guesses << @player.round_guess
       @board.feed_back_history << @feed_back
       @board.show_board
+      p self
     end
     puts "You won!"
   end
