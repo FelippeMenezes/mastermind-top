@@ -1,3 +1,5 @@
+require 'colorize'
+
 class Computer
   attr_accessor :name
 
@@ -11,6 +13,6 @@ class Computer
   end
 
   def computer_introduce
-    puts "Hello, my name is #{@name}, and I'll be your opponent in this game."
+    puts "Hello, my name is #{@name.colorize(:green)}, and I'll be your opponent in this game."
   end
 end
