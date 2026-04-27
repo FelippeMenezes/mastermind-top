@@ -21,8 +21,7 @@ class Match
 
     while @player.round_guess != @match_secret_code && @round < 15
       @round += 1
-      @player.ask_player_guess
-      @board.user_guesses_record << @player.round_guess
+      set_player_guess
       set_feed_back
       @board.show_board(round)
     end
@@ -40,5 +39,10 @@ class Match
   def set_feed_back
     @feed_back = ["X", "O", "#", "$"].sample(4) #To do
     @board.feed_back_record << @feed_back
+  end
+
+  def set_player_guess
+    @player.ask_player_guess
+    @board.user_guesses_record << @player.round_guess
   end
 end
