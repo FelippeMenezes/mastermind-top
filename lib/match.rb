@@ -30,6 +30,8 @@ class Match
 
   private
 
+  def
+
   def show_match_result
     puts @player.round_guess == @match_secret_code ?
     "Congrats! The secret code was #{@match_secret_code.join(' ').colorize(:green)}!" :
@@ -37,8 +39,34 @@ class Match
   end
 
   def set_feed_back
-    @feed_back = ["X", "O", "#", "$"].sample(4) #To do
-    @board.feed_back_record << @feed_back
+    p @match_secret_code
+    guess_digits = @player.round_guess
+    secret_digits = @match_secret_code
+
+    exact_matches = 0
+    guess_digits.each_with_index do |guess_digit, index|
+      secret_digit = secret_digits[index]
+      if guess_digit == secret_digit
+        exact_matches += 1
+      end
+    end
+
+    guess_counts = guess_digits.tally
+    secret_counts = secret_digits.tally
+
+    total_common = 0
+    guess_counts.each do |digit, count|
+      if secret_counts.key?(digit)
+        total_common += [count, secret_counts[digit]].min
+      end
+    end
+
+    wrong_position = total_common - exact_matches
+    feedback_result = []
+    exact_matches.times { feedback_result << "0" }
+    wrong_position.times { feedback_result << "X" }
+
+    @board.feed_back_record << feedback_result
   end
 
   def set_player_guess
