@@ -19,6 +19,7 @@ I'll be your opponent in this game."
   end
 
   def create_secret_code
+    spinner
     x = "X"
     y = "0"
     four_digits = "4 digits"
@@ -28,8 +29,8 @@ I'll be your opponent in this game."
     correct_position = "correct position"
     wrong_position = "wrong position"
     repetition = "repetition is allowed"
-    puts "This secret code consisting
-of #{four_digits.colorize(:yellow)}. Each digit ranges from #{range.colorize(:yellow)}, and
+    puts "This secret code has of #{four_digits.colorize(:yellow)}.
+Each digit ranges from #{range.colorize(:yellow)}, and
 #{repetition.colorize(:blue)}. Your objective is to guess
 the exact sequence within #{rounds.colorize(:yellow)} rounds.
 After each guess, feedback will be provided:
@@ -41,5 +42,20 @@ After each guess, feedback will be provided:
     4.times do
       @secret_code << code_options.sample
     end
+  end
+
+  private
+
+  def spinner
+    puts "I'll think of a secret code. Give me a few seconds.".colorize(:blue)
+    frames = ["-", "\\", "|", "/"]
+
+    10.times do
+      frames.each do |frame|
+        print "\r#{frame}"
+        sleep(0.1)
+      end
+    end
+    system("clear")
   end
 end

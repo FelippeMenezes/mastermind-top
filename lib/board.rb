@@ -11,6 +11,7 @@ class Board
   end
 
   def show_board(round)
+    system("clear")
     if round > 0
       puts "\n------ Mastermind - The Odin Project --------"
       @user_guesses_record.zip(@feed_back_record).each_with_index do |(guess, feedback), index|
