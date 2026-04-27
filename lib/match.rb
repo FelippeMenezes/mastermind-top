@@ -15,6 +15,17 @@ class Match
     @computer = Computer.create_computer
     @computer.computer_introduce(@player)
     @player.ask_player_role
+    if @player.role == true
+      start_match
+    else
+      puts "Not yet implemented. For now, you
+can only guess the computer code.".colorize(:red)
+    end
+  end
+
+  private
+
+  def start_match
     @computer.create_secret_code
     @match_secret_code = @computer.secret_code
     @board.show_board(round)
@@ -27,8 +38,6 @@ class Match
     end
     show_match_result
   end
-
-  private
 
   def show_match_result
     puts @player.round_guess == @match_secret_code ?
