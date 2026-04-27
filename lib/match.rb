@@ -26,6 +26,7 @@ class Match
       @feed_back = ["X", "O", "#", "$"].sample(4) #To do
       @board.feed_back_record << @feed_back
       @board.show_board(round)
+      p @match_secret_code
     end
     if @player.round_guess == @match_secret_code
       puts "Congrats! The secret code was #{@match_secret_code.join(" ")}!"
