@@ -14,7 +14,7 @@ class Board
     if round > 0
       puts "\n------------------- Board -------------------"
       @user_guesses_record.zip(@feed_back_record).each_with_index do |(guess, feedback), index|
-        puts "Rodada #{index + 1}: [ #{guess.join(' ')} ] - Feedback: [ #{feedback ? feedback.join(' ') : '....'} ]"
+        puts "Round #{index + 1}: [ #{guess.join(' ')} ] - Feedback: [ #{feedback ? feedback.join(' ') : '....'} ]"
       end
       puts "---------------------------------------------\n"
     end
