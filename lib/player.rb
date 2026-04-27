@@ -14,6 +14,12 @@ class Player
   def ask_player_guess
     print "What's your guess? => "
     guess = gets.chomp
+    check_player_input(guess)
+  end
+
+  private
+
+  def check_player_input(guess)
     if guess.match?(/^[1-6]{4}$/)
       @round_guess = string_to_integer(guess)
     else
@@ -21,8 +27,6 @@ class Player
       ask_player_guess
     end
   end
-
-  private
 
   def string_to_integer(string_number)
     string_number.chars.map(&:to_i)
