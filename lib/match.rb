@@ -33,7 +33,7 @@ class Match
   def show_match_result
     puts @player.round_guess == @match_secret_code ?
     "Congrats! The secret code was #{@match_secret_code.join(' ').colorize(:green)}!" :
-    "You tried! Good luck next time!".colorize(:red)
+    "You tried! The secret code was #{@match_secret_code.join(' ')}. Good luck next time!".colorize(:red)
   end
 
   def set_feed_back
