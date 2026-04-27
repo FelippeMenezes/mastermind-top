@@ -9,7 +9,7 @@ class Player
   def ask_player_name
     puts "Welcome! Let's play a game of Mastermind!".colorize(:green)
     puts "What's your name?"
-    @name = gets.chomp
+    @name = gets.chomp.capitalize
   end
 
   def ask_player_guess(round)
