@@ -8,5 +8,5 @@ computer = Computer.create_computer
 board = Board.create_board
 match = Match.new(player, computer, board)
 
-match.start_match
+match.start_game
 

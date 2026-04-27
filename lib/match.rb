@@ -10,7 +10,7 @@ class Match
     @round = round
   end
 
-  def start_match
+  def start_game
     @player.ask_player_name
     @computer = Computer.create_computer
     @computer.computer_introduce(@player)
