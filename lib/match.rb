@@ -31,13 +31,11 @@ class Match
 
   def show_match_result
     puts @player.round_guess == @match_secret_code ?
-    "Congrats! The secret code was #{@match_secret_code.join(' ').colorize(:green)}!" :
-    "You tried! The secret code was #{@match_secret_code.join(' ')}. Good luck next time!".colorize(:red)
+    "#{@player.name.colorize(:blue)}, congrats! The secret code was #{@match_secret_code.join(' ').colorize(:green)}!" :
+    "#{@player.name.colorize(:blue)}, you tried! The secret code was #{@match_secret_code.join(' ').colorize(:red)}. Good luck next time!"
   end
 
   def set_feed_back
-    p @match_secret_code
-    p @round
     guess_digits = @player.round_guess
     secret_digits = @match_secret_code
 
