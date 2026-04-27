@@ -30,8 +30,6 @@ class Match
 
   private
 
-  def
-
   def show_match_result
     puts @player.round_guess == @match_secret_code ?
     "Congrats! The secret code was #{@match_secret_code.join(' ').colorize(:green)}!" :
