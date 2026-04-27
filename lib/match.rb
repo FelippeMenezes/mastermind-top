@@ -19,7 +19,7 @@ class Match
     @match_secret_code = @computer.secret_code
     @board.show_board(round)
 
-    while @player.round_guess != @match_secret_code && @round < 15
+    while @player.round_guess != @match_secret_code && round < 15
       @round += 1
       set_player_guess
       set_feed_back
