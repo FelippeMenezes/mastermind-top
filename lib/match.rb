@@ -11,7 +11,6 @@ class Match
   end
 
   def start_match
-    puts "Welcome! Let's play a game of Mastermind!".colorize(:green)
     @player.ask_player_name
     @computer = Computer.create_computer
     @computer.computer_introduce
@@ -38,6 +37,7 @@ class Match
 
   def set_feed_back
     p @match_secret_code
+    p @round
     guess_digits = @player.round_guess
     secret_digits = @match_secret_code
 
@@ -68,7 +68,7 @@ class Match
   end
 
   def set_player_guess
-    @player.ask_player_guess
+    @player.ask_player_guess(@round)
     @board.user_guesses_record << @player.round_guess
   end
 end
