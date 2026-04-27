@@ -17,6 +17,8 @@ class Player
     @round_guess = string_to_integer(guess)
   end
 
+  private
+
   def string_to_integer(string_number)
     string_number.chars.map(&:to_i)
   end
