@@ -14,7 +14,12 @@ class Player
   def ask_player_guess
     print "What's your guess? => "
     guess = gets.chomp
-    @round_guess = string_to_integer(guess)
+    if guess.match?(/^[1-6]{4}$/)
+      @round_guess = string_to_integer(guess)
+    else
+      puts "Select just 4 numbers between 1 and 6.".colorize(:red)
+      ask_player_guess
+    end
   end
 
   private
