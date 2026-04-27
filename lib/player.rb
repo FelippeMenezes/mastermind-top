@@ -15,13 +15,13 @@ class Player
   def ask_player_guess(round)
     if round == 1
       first = "first"
-      print "#{@name.colorize(:green)}, what's your #{first.colorize(:blue)} guess? => "
+      print "#{@name.colorize(:blue)}, what's your #{first.colorize(:green)} guess? => "
     elsif round == 15
       last = "last"
-      print "#{@name.colorize(:green)}, what's your #{last.colorize(:red)} guess? => "
+      print "#{@name.colorize(:blue)}, what's your #{last.colorize(:red)} guess? => "
     else
       round_string = "#{round}"
-      print "#{@name.colorize(:green)}, what's your guess number #{round_string.colorize(:yellow)}? => "
+      print "#{@name.colorize(:blue)}, what's your guess number #{round_string.colorize(:yellow)}? => "
     end
     guess = gets.chomp
     check_player_input(guess, round)
