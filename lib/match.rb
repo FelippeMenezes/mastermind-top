@@ -11,7 +11,7 @@ class Match
   end
 
   def start_match
-    puts "Welcome! Let's play a game of Mastermind!"
+    puts "Welcome! Let's play a game of Mastermind!".colorize(:green)
     @player.ask_player_name
     @computer = Computer.create_computer
     @computer.computer_introduce
@@ -27,11 +27,8 @@ class Match
       @board.feed_back_record << @feed_back
       @board.show_board(round)
     end
-    if @player.round_guess == @match_secret_code
-      puts "Congrats! The secret code was #{@match_secret_code.join(" ")}!"
-    else
-      puts "You tried! Good luck next time!"
-    end
+    puts @player.round_guess == @match_secret_code ?
+      "Congrats! The secret code was #{@match_secret_code.join(' ').colorize(:green)}!" :
+      "You tried! Good luck next time!".colorize(:red)
   end
 end
-
