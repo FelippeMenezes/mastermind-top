@@ -1,15 +1,27 @@
 class Player
-  attr_accessor :name, :round_guess
+  attr_accessor :name, :round_guess, :role
 
-  def initialize(name = nil, round_guess = nil)
+  def initialize(name = nil, round_guess = nil, role = nil )
     @name = name
     @round_guess = round_guess
+    @role = role
   end
 
   def ask_player_name
     puts "Welcome! Let's play a game of Mastermind!".colorize(:green)
     puts "What's your name?"
     @name = gets.chomp.capitalize
+  end
+
+  def ask_player_role
+    x = "x"
+    y = "0"
+    puts"Type #{x.colorize(:yellow)} to discover my secret code,
+or type #{y.colorize(:yellow)}(zero) if you want me to
+discover your secret code?"
+    print "Press #{x.colorize(:yellow)} or #{y.colorize(:yellow)} and press Enter => "
+    player_role = gets.chomp.downcase
+    player_role == "x" ? @role = true : @role = false
   end
 
   def ask_player_guess(round)

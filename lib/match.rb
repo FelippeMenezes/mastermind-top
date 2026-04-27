@@ -13,7 +13,8 @@ class Match
   def start_match
     @player.ask_player_name
     @computer = Computer.create_computer
-    @computer.computer_introduce
+    @computer.computer_introduce(@player)
+    @player.ask_player_role
     @computer.create_secret_code
     @match_secret_code = @computer.secret_code
     @board.show_board(round)
@@ -32,7 +33,7 @@ class Match
   def show_match_result
     puts @player.round_guess == @match_secret_code ?
     "#{@player.name.colorize(:blue)}, congrats! The secret code was #{@match_secret_code.join(' ').colorize(:green)}!" :
-    "#{@player.name.colorize(:blue)}, you tried! The secret code was #{@match_secret_code.join(' ').colorize(:red)}. Good luck next time!"
+    "#{@player.name.colorize(:blue)}, you tried! My secret code was #{@match_secret_code.join(' ').colorize(:red)}. Good luck next time!"
   end
 
   def set_feed_back

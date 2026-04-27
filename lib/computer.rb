@@ -13,8 +13,9 @@ class Computer
     new(names.sample)
   end
 
-  def computer_introduce
-    puts "Hello, my name is #{@name.colorize(:red)}, and I'll be your opponent in this game."
+  def computer_introduce(player)
+    puts "Hello! #{player.name.colorize(:blue)}, my name is #{@name.colorize(:red)}!
+I'll be your opponent in this game."
   end
 
   def create_secret_code
