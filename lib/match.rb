@@ -61,8 +61,8 @@ class Match
 
     wrong_position = total_common - exact_matches
     feedback_result = []
-    exact_matches.times { feedback_result << "0" }
-    wrong_position.times { feedback_result << "X" }
+    exact_matches.times { feedback_result << "0".colorize(:green) }
+    wrong_position.times { feedback_result << "X".colorize(:yellow) }
 
     @board.feed_back_record << feedback_result
   end
