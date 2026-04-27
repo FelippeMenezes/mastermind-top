@@ -3,7 +3,7 @@ require 'colorize'
 class Computer
   attr_accessor :name, :secret_code
 
-  def initialize (name = nil, secret_code = nil)
+  def initialize (name = nil, secret_code = [])
     @name = name
     @secret_code = secret_code
   end
@@ -19,6 +19,8 @@ class Computer
 
   def create_secret_code
     code_options = [1, 2, 3, 4, 5, 6]
-    @secret_code = code_options.sample(4)
+    4.times do
+      @secret_code << code_options.sample
+    end
   end
 end
