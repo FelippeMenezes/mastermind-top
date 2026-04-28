@@ -1,6 +1,8 @@
 # Mastermind — The Odin Project
  
-> A command-line implementation of the classic code-breaking game **Mastermind**, built with Ruby as part of [The Odin Project](https://www.theodinproject.com/lessons/ruby-mastermind) curriculum.
+> A command-line implementation of the classic code-breaking game **Mastermind**, 
+>
+> [Mastermind link](https://replit.com/@FelippeMenezes/mastermind-top)
  
 ---
  
