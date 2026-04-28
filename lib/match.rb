@@ -14,6 +14,7 @@ class Match
   end
 
   def start_game
+    system('clear')
     @player.ask_player_name
     @computer = Computer.create_computer
     @computer.computer_introduce(@player)
