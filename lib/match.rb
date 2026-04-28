@@ -24,17 +24,10 @@ class Match
   private
 
   def start_match
-    if @player.role == true
-      @computer.create_secret_code
-      @match_secret_code = @computer.secret_code
-    else
-      @match_secret_code = @player.ask_player_code
-    end
+    role_secret_code
     @board.show_board(round)
-
     while @player.round_guess != @match_secret_code && round < 15
       @round += 1
-
       set_player_guess
       set_feed_back
       @board.show_board(round)
@@ -79,5 +72,14 @@ class Match
   def set_player_guess
     @player.ask_player_guess(@round)
     @board.user_guesses_record << @player.round_guess
+  end
+
+  def role_secret_code
+    if @player.role == true
+      @computer.create_secret_code
+      @match_secret_code = @computer.secret_code
+    else
+      @match_secret_code = @player.ask_player_code
+    end
   end
 end

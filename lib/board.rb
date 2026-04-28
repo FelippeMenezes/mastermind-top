@@ -19,7 +19,7 @@ class Board
 
     puts "\n------ Mastermind - The Odin Project --------"
     @user_guesses_record.zip(@feed_back_record).each_with_index do |(guess, feedback), index|
-      puts "Round #{index + 1}: [ #{guess.join(' ').colorize(:blue)} ] - Feedback: [ #{feedback ? feedback.join(' ') : '....'} ]"
+      puts "Round #{index + 1}: [ #{guess.join(' ').colorize(:blue)} ] - Feedback: [ #{feedback.join(' ')} ]"
     end
     puts "---------------------------------------------\n"
   end

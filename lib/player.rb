@@ -32,16 +32,7 @@ discover your secret code?"
       spinner_player
       guess = computer_strategy
     else
-      if round == 1
-        first = 'first'
-        print "#{@name.colorize(:blue)}, what's your #{first.colorize(:green)} guess? => "
-      elsif round == 15
-        last = 'last'
-        print "#{@name.colorize(:blue)}, what's your #{last.colorize(:red)} guess? => "
-      else
-        round_string = round.to_s
-        print "#{@name.colorize(:blue)}, what's your guess number #{round_string.colorize(:yellow)}? => "
-      end
+      guess_questions(round)
       guess = gets.chomp
     end
     check_player_input(guess, round)
@@ -97,5 +88,18 @@ Each digit ranges from #{range.colorize(:yellow)}, and
 
   def computer_strategy
     4.times.map { rand(1..6) }.join # To do
+  end
+
+  def guess_questions(round)
+    if round == 1
+      first = 'first'
+      print "#{@name.colorize(:blue)}, what's your #{first.colorize(:green)} guess? => "
+    elsif round == 15
+      last = 'last'
+      print "#{@name.colorize(:blue)}, what's your #{last.colorize(:red)} guess? => "
+    else
+      round_string = round.to_s
+      print "#{@name.colorize(:blue)}, what's your guess number #{round_string.colorize(:yellow)}? => "
+    end
   end
 end
