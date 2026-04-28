@@ -70,7 +70,6 @@ The project is structured around **4 single-responsibility classes**, each encap
  
 ### Key Ruby Concepts Applied
  
-- **`frozen_string_literal: true`** — Freezes all string literals at parse time, reducing memory allocations and preventing accidental string mutation. A production-level Ruby practice.
 - **Factory Methods** (`Computer.create_computer`, `Board.create_board`) — Class-level constructors that encapsulate creation logic, keeping initialization clean and expressive.
 - **Keyword arguments with defaults** in `Match.new` (`match_secret_code:`, `feed_back:`, `round:`) — Improves readability and avoids positional argument confusion.
 - **`attr_accessor`** — Generates getters and setters, exposing only what needs to be exposed.
@@ -79,7 +78,6 @@ The project is structured around **4 single-responsibility classes**, each encap
 - **`Array#zip`** — Pairs guesses with their feedback arrays for clean board rendering (`guesses.zip(feedbacks).each_with_index`).
 - **`Array#chars` + `map(&:to_i)`** — Converts a string guess like `"1234"` into `[1, 2, 3, 4]` in a single idiomatic pipeline.
 - **`Enumerable#each_with_index`** — Used for round-number display during board rendering.
-- **`Integer#times`** — Idiomatic Ruby loops for building arrays (`4.times { arr << value }`).
 - **Private methods** — Internal logic (`spinner_computer`, `check_player_input`, etc.) is hidden from the public interface, enforcing encapsulation.
 ### Mastermind Feedback Algorithm
  
