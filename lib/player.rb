@@ -27,6 +27,7 @@ discover your secret code?"
   def ask_player_guess(round)
     if @role != true
       spinner_player
+      guess = computer_strategy
     else
       if round == 1
         first = "first"
@@ -38,12 +39,7 @@ discover your secret code?"
         round_string = "#{round}"
         print "#{@name.colorize(:blue)}, what's your guess number #{round_string.colorize(:yellow)}? => "
       end
-    end
-    if @role == true
       guess = gets.chomp
-    else
-      code = 4.times.map { rand(1..6) }.join
-      guess = code
     end
     check_player_input(guess, round)
   end
@@ -55,7 +51,7 @@ discover your secret code?"
     puts "Your secret code should have #{four_digits.colorize(:yellow)}.
 Each digit ranges from #{range.colorize(:yellow)}, and
 #{repetition.colorize(:blue)}."
-    puts "Enter your code here. => "
+    print "Enter your code here. => "
     input = gets.chomp
     check_player_code_input(input)
   end
@@ -94,5 +90,9 @@ Each digit ranges from #{range.colorize(:yellow)}, and
 
   def string_to_integer(string_number)
     string_number.chars.map(&:to_i)
+  end
+
+  def computer_strategy
+    4.times.map { rand(1..6) }.join # To do
   end
 end
