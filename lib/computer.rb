@@ -1,15 +1,18 @@
+# frozen_string_literal: true
+
 require 'colorize'
 
+# Class to computer player
 class Computer
   attr_accessor :name, :secret_code
 
-  def initialize (name = nil, secret_code = [])
+  def initialize(name = nil, secret_code = [])
     @name = name
     @secret_code = secret_code
   end
 
   def self.create_computer
-    names = ["GPTo", "ClaudIO", "MarI.A."]
+    names = ['GPTo', 'ClaudIO', 'MarI.A.']
     new(names.sample)
   end
 
@@ -20,15 +23,15 @@ I'll be your opponent in this game."
 
   def create_secret_code
     spinner_computer
-    x = "X"
-    y = "0"
-    four_digits = "4 digits"
-    range = "1 to 6"
-    rounds = "15"
-    correct_digit = "correct digit"
-    correct_position = "correct position"
-    wrong_position = "wrong position"
-    repetition = "repetition is allowed"
+    x = 'X'
+    y = '0'
+    four_digits = '4 digits'
+    range = '1 to 6'
+    rounds = '15'
+    correct_digit = 'correct digit'
+    correct_position = 'correct position'
+    wrong_position = 'wrong position'
+    repetition = 'repetition is allowed'
     puts "This secret code has of #{four_digits.colorize(:yellow)}.
 Each digit ranges from #{range.colorize(:yellow)}, and
 #{repetition.colorize(:blue)}. Your objective is to guess
@@ -48,7 +51,7 @@ After each guess, feedback will be provided:
 
   def spinner_computer
     puts "I'll think of a secret code. Give me a few seconds.".colorize(:blue)
-    frames = ["-", "\\", "|", "/"]
+    frames = ['-', '\\', '|', '/']
 
     10.times do
       frames.each do |frame|
@@ -56,6 +59,6 @@ After each guess, feedback will be provided:
         sleep(0.1)
       end
     end
-    system("clear")
+    system('clear')
   end
 end

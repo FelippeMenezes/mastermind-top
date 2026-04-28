@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Class to play match of Mastermind
 class Match
   attr_accessor :player, :computer, :board, :match_secret_code, :feed_back, :round
 
@@ -41,13 +44,9 @@ class Match
 
   def show_match_result
     if @player.role
-      puts @player.round_guess == @match_secret_code ?
-      "#{@player.name.colorize(:blue)}, congrats! The secret code was #{@match_secret_code.join(' ').colorize(:green)}!" :
-      "#{@player.name.colorize(:blue)}, you tried! My secret code was #{@match_secret_code.join(' ').colorize(:red)}. Good luck next time!"
+      puts @player.round_guess == @match_secret_code ? "#{@player.name.colorize(:blue)}, congrats! The secret code was #{@match_secret_code.join(' ').colorize(:green)}!" : "#{@player.name.colorize(:blue)}, you tried! My secret code was #{@match_secret_code.join(' ').colorize(:red)}. Good luck next time!"
     else
-      puts @player.round_guess == @match_secret_code ?
-      "#{@player.name.colorize(:blue)}, your secret code was #{@match_secret_code.join(' ').colorize(:yellow)}!" :
-      "#{@player.name.colorize(:blue)}, I tried! But I couldn't guess your secret code."
+      puts @player.round_guess == @match_secret_code ? "#{@player.name.colorize(:blue)}, your secret code was #{@match_secret_code.join(' ').colorize(:yellow)}!" : "#{@player.name.colorize(:blue)}, I tried! But I couldn't guess your secret code."
     end
   end
 
@@ -58,9 +57,7 @@ class Match
     exact_matches = 0
     guess_digits.each_with_index do |guess_digit, index|
       secret_digit = secret_digits[index]
-      if guess_digit == secret_digit
-        exact_matches += 1
-      end
+      exact_matches += 1 if guess_digit == secret_digit
     end
 
     guess_counts = guess_digits.tally
@@ -68,15 +65,13 @@ class Match
 
     total_common = 0
     guess_counts.each do |digit, count|
-      if secret_counts.key?(digit)
-        total_common += [count, secret_counts[digit]].min
-      end
+      total_common += [count, secret_counts[digit]].min if secret_counts.key?(digit)
     end
 
     wrong_position = total_common - exact_matches
     feedback_result = []
-    exact_matches.times { feedback_result << "0".colorize(:green) }
-    wrong_position.times { feedback_result << "X".colorize(:yellow) }
+    exact_matches.times { feedback_result << '0'.colorize(:green) }
+    wrong_position.times { feedback_result << 'X'.colorize(:yellow) }
 
     @board.feed_back_record << feedback_result
   end

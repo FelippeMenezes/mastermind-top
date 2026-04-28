@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'lib/board'
 require_relative 'lib/computer'
 require_relative 'lib/match'
@@ -9,4 +11,3 @@ board = Board.create_board
 match = Match.new(player, computer, board)
 
 match.start_game
-

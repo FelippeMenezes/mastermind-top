@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Class for Mastermind board
 class Board
   attr_accessor :user_guesses_record, :feed_back_record
 
@@ -11,13 +14,13 @@ class Board
   end
 
   def show_board(round)
-    system("clear")
-    if round > 0
-      puts "\n------ Mastermind - The Odin Project --------"
-      @user_guesses_record.zip(@feed_back_record).each_with_index do |(guess, feedback), index|
-        puts "Round #{index + 1}: [ #{guess.join(' ').colorize(:blue)} ] - Feedback: [ #{feedback ? feedback.join(' ') : '....'} ]"
-      end
-      puts "---------------------------------------------\n"
+    system('clear')
+    return unless round.positive?
+
+    puts "\n------ Mastermind - The Odin Project --------"
+    @user_guesses_record.zip(@feed_back_record).each_with_index do |(guess, feedback), index|
+      puts "Round #{index + 1}: [ #{guess.join(' ').colorize(:blue)} ] - Feedback: [ #{feedback ? feedback.join(' ') : '....'} ]"
     end
+    puts "---------------------------------------------\n"
   end
 end
