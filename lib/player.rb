@@ -25,21 +25,54 @@ discover your secret code?"
   end
 
   def ask_player_guess(round)
-    if round == 1
-      first = "first"
-      print "#{@name.colorize(:blue)}, what's your #{first.colorize(:green)} guess? => "
-    elsif round == 15
-      last = "last"
-      print "#{@name.colorize(:blue)}, what's your #{last.colorize(:red)} guess? => "
+    if @role != true
+      spinner_player
     else
-      round_string = "#{round}"
-      print "#{@name.colorize(:blue)}, what's your guess number #{round_string.colorize(:yellow)}? => "
+      if round == 1
+        first = "first"
+        print "#{@name.colorize(:blue)}, what's your #{first.colorize(:green)} guess? => "
+      elsif round == 15
+        last = "last"
+        print "#{@name.colorize(:blue)}, what's your #{last.colorize(:red)} guess? => "
+      else
+        round_string = "#{round}"
+        print "#{@name.colorize(:blue)}, what's your guess number #{round_string.colorize(:yellow)}? => "
+      end
     end
-    guess = gets.chomp
+    if @role == true
+      guess = gets.chomp
+    else
+      code = 4.times.map { rand(1..6) }.join
+      guess = code
+    end
     check_player_input(guess, round)
   end
 
+  def ask_player_code
+    four_digits = "4 digits"
+    range = "1 to 6"
+    repetition = "repetition is allowed"
+    puts "Your secret code should have #{four_digits.colorize(:yellow)}.
+Each digit ranges from #{range.colorize(:yellow)}, and
+#{repetition.colorize(:blue)}."
+    puts "Enter your code here. => "
+    input = gets.chomp
+    check_player_code_input(input)
+  end
+
   private
+
+  def spinner_player
+    puts "I thinking a guess. Give me a few seconds.".colorize(:blue)
+    frames = ["-", "\\", "|", "/"]
+
+    5.times do
+      frames.each do |frame|
+        print "\r#{frame}"
+        sleep(0.1)
+      end
+    end
+  end
 
   def check_player_input(guess, round)
     if guess.match?(/^[1-6]{4}$/)
@@ -47,6 +80,15 @@ discover your secret code?"
     else
       puts "Select just 4 numbers between 1 and 6.".colorize(:red)
       ask_player_guess(round)
+    end
+  end
+
+  def check_player_code_input(input)
+    if input.match?(/^[1-6]{4}$/)
+      string_to_integer(input)
+    else
+      puts "Select just 4 numbers between 1 and 6.".colorize(:red)
+      ask_player_code
     end
   end
 

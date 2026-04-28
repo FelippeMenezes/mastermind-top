@@ -15,23 +15,23 @@ class Match
     @computer = Computer.create_computer
     @computer.computer_introduce(@player)
     @player.ask_player_role
-    if @player.role == true
-      start_match
-    else
-      puts "Not yet implemented. For now, you
-can only guess the computer code.".colorize(:red)
-    end
+    start_match
   end
 
   private
 
   def start_match
-    @computer.create_secret_code
-    @match_secret_code = @computer.secret_code
+    if @player.role == true
+      @computer.create_secret_code
+      @match_secret_code = @computer.secret_code
+    else
+      @match_secret_code = @player.ask_player_code
+    end
     @board.show_board(round)
 
     while @player.round_guess != @match_secret_code && round < 15
       @round += 1
+
       set_player_guess
       set_feed_back
       @board.show_board(round)
@@ -40,9 +40,15 @@ can only guess the computer code.".colorize(:red)
   end
 
   def show_match_result
-    puts @player.round_guess == @match_secret_code ?
-    "#{@player.name.colorize(:blue)}, congrats! The secret code was #{@match_secret_code.join(' ').colorize(:green)}!" :
-    "#{@player.name.colorize(:blue)}, you tried! My secret code was #{@match_secret_code.join(' ').colorize(:red)}. Good luck next time!"
+    if @player.role
+      puts @player.round_guess == @match_secret_code ?
+      "#{@player.name.colorize(:blue)}, congrats! The secret code was #{@match_secret_code.join(' ').colorize(:green)}!" :
+      "#{@player.name.colorize(:blue)}, you tried! My secret code was #{@match_secret_code.join(' ').colorize(:red)}. Good luck next time!"
+    else
+      puts @player.round_guess == @match_secret_code ?
+      "#{@player.name.colorize(:blue)}, your secret code was #{@match_secret_code.join(' ').colorize(:yellow)}!" :
+      "#{@player.name.colorize(:blue)}, I tried! But I couldn't guess your secret code."
+    end
   end
 
   def set_feed_back

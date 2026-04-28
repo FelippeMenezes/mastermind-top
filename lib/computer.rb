@@ -19,7 +19,7 @@ I'll be your opponent in this game."
   end
 
   def create_secret_code
-    spinner
+    spinner_computer
     x = "X"
     y = "0"
     four_digits = "4 digits"
@@ -37,7 +37,7 @@ After each guess, feedback will be provided:
 - #{x.colorize(:green)} indicates a #{correct_digit.colorize(:green)} in the #{correct_position.colorize(:green)}
 - #{y.colorize(:yellow)} indicates a #{correct_digit.colorize(:green)} in the #{wrong_position.colorize(:red)}
 - No symbol means the digit is not present in the code.
-   Good luck!"
+    Good luck!"
     code_options = [1, 2, 3, 4, 5, 6]
     4.times do
       @secret_code << code_options.sample
@@ -46,7 +46,7 @@ After each guess, feedback will be provided:
 
   private
 
-  def spinner
+  def spinner_computer
     puts "I'll think of a secret code. Give me a few seconds.".colorize(:blue)
     frames = ["-", "\\", "|", "/"]
 
