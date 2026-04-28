@@ -1,6 +1,6 @@
 # Mastermind — The Odin Project
  
-> A command-line implementation of the classic code-breaking game **Mastermind**, built with Ruby as part of [The Odin Project](https://www.theodinproject.com/) curriculum.
+> A command-line implementation of the classic code-breaking game **Mastermind**, built with Ruby as part of [The Odin Project](https://www.theodinproject.com/lessons/ruby-mastermind) curriculum.
  
 ---
  
@@ -100,13 +100,6 @@ wrong_position = total_common - exact_matches
  
 This avoids double-counting: if the secret is `[1,1,2,3]` and the guess is `[1,1,1,1]`, the algorithm correctly returns 2 exact matches and 0 wrong-position, not 4.
  
-### CLI UX Details
- 
-- **Spinner animation** with `\r` carriage return — overwrites the same line for a loading effect, using `sleep` for timing control.
-- **`system('clear')`** — Clears the terminal between rounds for a clean game experience.
-- **Colorized output** via the `colorize` gem — color-coded feedback, player names, and prompts for better readability.
----
- 
 ## Tech Stack
  
 | Tool | Purpose |
@@ -132,11 +125,3 @@ mastermind-top/
 ├── Gemfile.lock
 └── README.md
 ```
- 
----
- 
-## Built With
- 
-- [The Odin Project — Ruby Course](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby)
-- [Mastermind — Wikipedia](https://en.wikipedia.org/wiki/Mastermind_(board_game))
----
