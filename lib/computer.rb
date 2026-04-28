@@ -52,7 +52,6 @@ After each guess, feedback will be provided:
   def spinner_computer
     puts "I'll think of a secret code. Give me a few seconds.".colorize(:blue)
     frames = ['-', '\\', '|', '/']
-
     10.times do
       frames.each do |frame|
         print "\r#{frame}"

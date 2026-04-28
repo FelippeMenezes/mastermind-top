@@ -47,26 +47,21 @@ class Match
   def set_feed_back
     guess_digits = @player.round_guess
     secret_digits = @match_secret_code
-
     exact_matches = 0
     guess_digits.each_with_index do |guess_digit, index|
       secret_digit = secret_digits[index]
       exact_matches += 1 if guess_digit == secret_digit
     end
-
     guess_counts = guess_digits.tally
     secret_counts = secret_digits.tally
-
     total_common = 0
     guess_counts.each do |digit, count|
       total_common += [count, secret_counts[digit]].min if secret_counts.key?(digit)
     end
-
     wrong_position = total_common - exact_matches
     feedback_result = []
     exact_matches.times { feedback_result << '0'.colorize(:green) }
     wrong_position.times { feedback_result << 'X'.colorize(:yellow) }
-
     @board.feed_back_record << feedback_result
   end
 

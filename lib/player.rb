@@ -55,7 +55,6 @@ Each digit ranges from #{range.colorize(:yellow)}, and
   def spinner_player
     puts 'I thinking a guess. Give me a few seconds.'.colorize(:blue)
     frames = ['-', '\\', '|', '/']
-
     5.times do
       frames.each do |frame|
         print "\r#{frame}"
